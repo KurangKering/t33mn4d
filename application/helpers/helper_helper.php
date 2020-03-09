@@ -48,12 +48,25 @@ if (!function_exists('hJK')) {
 if (!function_exists('hStatusPenyakit')) {
 	function hStatusPenyakit($status = null) {
 		$daftar =  array(
-			'0' => 'Tidak Menular',
-			'1' => 'Menular',
+			'1' => 'Tidak Menular',
+			'2' => 'Menular',
 		
 		);
-		if (in_array($status, [0,1])) {
+		if ($status) {
 			return $daftar[$status];
+		} 
+		return $daftar;
+	}
+}
+if (!function_exists('hRole')) {
+	function hRole($akses = null) {
+		$roles =  array(
+			'1' => 'Puskesmas',
+			'2' => 'Staff',
+		
+		);
+		if ($akses) {
+			return $roles[$akses];
 		} 
 		return $daftar;
 	}

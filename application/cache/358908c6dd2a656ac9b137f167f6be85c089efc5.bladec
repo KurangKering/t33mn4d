@@ -27,17 +27,20 @@
  <div class="row">
  <div class="col-sm-12">
  <div class="card-box table-responsive">
- <table id="table-pasien" class="table table-striped table-bordered" style="width:100%">
+ <table id="table-kesakitan" class="table table-striped table-bordered" style="width:100%">
  <thead>
  <tr>
  
  <th>ID</th>
- <th>Nama</th>
- <th>Jenis Kelamin</th>
+ <th>Bulan</th>
+ <th>Tahun</th>
  <th>Puskesmas</th>
  <th>Penyakit</th>
- <th>Tanggal </th>
- <th>Status</th>
+ <th>BL </th>
+ <th>BP </th>
+ <th>LL </th>
+ <th>LP </th>
+ <th>Jumlah</th>
  <th>Action</th>
  </tr>
  </thead>
@@ -53,55 +56,90 @@
 	</div>
 </div>
 </div>
+
 <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-	<div class="modal-dialog modal-lg"  role="document">
+	<div class="modal-dialog"  role="document">
  <div class="modal-content">
  <div class="modal-header">
- <h5 class="modal-title" id="modal-title-pasien">Tambah Pueskesmas</h5>
+ <h5 class="modal-title" id="modal-title-kesakitan">Tambah Data</h5>
  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
  <span aria-hidden="true">&times;</span>
  </button>
  </div>
  <div class="modal-body">
  <div id="modal-content">
+ <p class="mt-3 text-danger" id="global-error"></p>
  <form>
  <input type="hidden" id="id" value="">
  
- 
-
-
- <div class="row">
- <div class="col-md-6">
-
  <div class="form-group">
- <label for="message-text" class="col-form-label">Pasien Nama:</label>
- <select id="pasien" class="form-control">
- <?php $__currentLoopData = $data['pasien']; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $k => $pasien): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
- <option value="<?php echo static::e($pasien->pasien_id); ?>"><?php echo static::e($pasien->pasien_nama); ?></option>
+ <label for="message-text" class="col-form-label">Bulan:</label>
+ <select  id="bulan" class="form-control">
+ <?php $__currentLoopData = $data['bulan']; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $k => $bulan): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
+ <option value="<?php echo static::e($k); ?>"><?php echo static::e($bulan); ?></option>
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  </select>
  <div class="error"></div>
+
  </div>
- 
+ <div class="form-group">
+ <label for="message-text" class="col-form-label">Tahun:</label>
+ <input type="text" class="form-control" id="tahun">
+ <div class="error"></div>
+
  </div>
- <div class="col-md-6">
+ <div class="form-group">
+ <label for="message-text" class="col-form-label">Puskesmas:</label>
+ <select  id="puskesmas" class="form-control">
+ <?php $__currentLoopData = $data['puskesmas']; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $puskesmas): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
+ <option value="<?php echo static::e($puskesmas->puskesmas_id); ?>"><?php echo static::e($puskesmas->puskesmas_nama); ?></option>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </select>
+ <div class="error"></div>
+
+ </div>
  <div class="form-group">
  <label for="message-text" class="col-form-label">Penyakit:</label>
- <select id="penyakit" class="form-control">
- <?php $__currentLoopData = $data['penyakit']; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $k => $penyakit): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
+ <select  id="penyakit" class="form-control">
+ <?php $__currentLoopData = $data['penyakit']; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $penyakit): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
  <option value="<?php echo static::e($penyakit->penyakit_id); ?>"><?php echo static::e($penyakit->penyakit_nama); ?></option>
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  </select>
  <div class="error"></div>
+
  </div>
  <div class="form-group">
- <label for="message-text" class="col-form-label">Tanggal:</label>
- <input type="date" class="form-control" id="tanggal" value="<?php echo static::e(date('Y-m-d')); ?>" placeholder="">
+ <label for="message-text" class="col-form-label">BL:</label>
+ <input type="text"  id="BL" class="form-control"></input>
+ 
  <div class="error"></div>
+
  </div>
- </div>
+ <div class="form-group">
+ <label for="message-text" class="col-form-label">BP:</label>
+ <input type="text"  id="BP" class="form-control"></input>
+ 
+ <div class="error"></div>
+
  </div>
 
+ <div class="form-group">
+ <label for="message-text" class="col-form-label">LL:</label>
+ <input type="text"  id="LL" class="form-control"></input>
+ 
+ <div class="error"></div>
+
+ </div>
+
+ <div class="form-group">
+ <label for="message-text" class="col-form-label">LP:</label>
+ <input type="text"  id="LP" class="form-control"></input>
+ 
+ <div class="error"></div>
+
+ </div>
+ 
+ 
  </form>
  </div>
  </div>
@@ -111,10 +149,9 @@
  </div>
  </div>
 	</div>
-</div>s
+</div>
 <?php $this->stopSection(); ?>
 <?php $this->startSection('js-export'); ?>
-
 <?php $this->stopSection(); ?>
 <?php $this->startSection('js-inline'); ?>
 <script>
@@ -122,24 +159,31 @@
 	let $modalDetail = null;
 	let $btnTambah = null;
 	let $btnSubmit = null;
-	let $nama = null;
-	let $jk = null;
-	let $nama_kk = null;
-	let $alamat = null;
-	let $tanggal_lahir = null;
-	let $tempat_lahir = null;
+	let $bulan = null;
+	let $tahun = null;
+	let $puskesmas = null;
+	let $penyakit = null;
+	let $BL = null;
+	let $BP = null;
+	let $LL = null;
+	let $LP = null;
 	let $id = null;
 	$(function() {
  $modalDetail = $("#modalDetail");
  $btnTambah = $("#btn-tambah");
  $btnSubmit = $("#btn-submit");
- $pasien = $("#pasien");
+ $bulan = $("#bulan");
+ $tahun = $("#tahun");
+ $puskesmas = $("#puskesmas");
  $penyakit = $("#penyakit");
- $tanggal = $("#tanggal");
+ $BL = $("#BL");
+ $BP = $("#BP");
+ $LL = $("#LL");
+ $LP = $("#LP");
+
  $id = $("#id");
 
-
- $tableKesakitan = $('#table-pasien').DataTable({ 
+ $tableKesakitan = $('#table-kesakitan').DataTable({ 
  "bAutoWidth": false ,
  "processing": true, 
  "serverSide": true, 
@@ -147,22 +191,27 @@
  "ajax": {
  "url": '<?php echo base_url('data-kesakitan/jsonDataKesakitan'); ?>',
  "type": "POST",
-
+ 
 
  },
-
  "columns": [
  {"data": "kesakitan_id"},
- {"data": "pasien_nama"},
- {"data": "jk"},
+ {"data": "kesakitan_bulan"},
+ {"data": "kesakitan_tahun"},
  {"data": "puskesmas_nama"},
  {"data": "penyakit_nama"},
- {"data": "kesakitan_tanggal"},
- {"data": "kesakitan_status"},
+ {"data": "kesakitan_BL"},
+ {"data": "kesakitan_BP"},
+ {"data": "kesakitan_LL"},
+ {"data": "kesakitan_LP"},
+ {"data": "jumlah"},
  {"data": "action"},
  ],
  'columnDefs': [
- 
+ {
+ "targets": 0,
+ "orderable" : false,
+ },
  {
  "targets": 3,
  "className": "text-center",
@@ -171,7 +220,11 @@
  "width" : "20%",
 
  }],
- 
+ rowCallback: function(row, data, iDisplayIndex) {
+
+ var index = iDisplayIndex + 1;
+ $('td:eq(0)', row).html(index);
+ },
 
 
  });
@@ -179,15 +232,20 @@
  $btnTambah.click(function() {
  clearData();
  clearError();
- $("#modal-title-pasien").text("Tambah Data Kesakitan");
+ $("#modal-title-kesakitan").text("Tambah Data Kesakitan");
  $modalDetail.modal("show");
  })
 
  $btnSubmit.click(function(e) {
  formData = {
- pasien: $pasien.val(),
+ bulan: $bulan.val(),
+ tahun: $tahun.val(),
+ puskesmas: $puskesmas.val(),
  penyakit: $penyakit.val(),
- tanggal: $tanggal.val(),
+ BL: $BL.val(),
+ BP: $BP.val(),
+ LL: $LL.val(),
+ LP: $LP.val(),
  id: $id.val(),
  };
  data = Object.keys(formData).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(formData[key])).join('&')
@@ -201,13 +259,17 @@
  .then(res => {
  data = res.data;
  clearError();
- console.log(data);
  if (data.success == 0) {
+ if (typeof data.messages === 'object') {
  $.each(data.messages, function(key, value) {
 
  $('#'+key).addClass('is-invalid');
  $('#'+key).parent('.form-group').find('.error').html(value);
+
  });
+ } else {
+ $('#global-error').html(data.messages);
+ }
  } else if (data.success == 1){
  $modalDetail.modal('hide');
  $tableKesakitan.ajax.reload();
@@ -244,11 +306,16 @@
  .then((res) => {
 
  data = res.data;
- $pasien.val(data.kesakitan_pasien_id);
+ $bulan.val(data.kesakitan_bulan);
+ $tahun.val(data.kesakitan_tahun);
+ $puskesmas.val(data.kesakitan_puskesmas_id);
  $penyakit.val(data.kesakitan_penyakit_id);
- $tanggal.val(data.kesakitan_tanggal);
+ $BL.val(data.kesakitan_BL);
+ $BP.val(data.kesakitan_BP);
+ $LL.val(data.kesakitan_LL);
+ $LP.val(data.kesakitan_LP);
  $id.val(data.kesakitan_id);
- $("#modal-title-pasien").text("Ubah Data Kesakitan");
+ $("#modal-title-kesakitan").text("Ubah Data Kesakitan");
 
  $modalDetail.modal("show");
  })
@@ -293,16 +360,23 @@
 
 
 	function clearData() {
- $id.val("");
- $pasien.prop('selectedIndex',0);
+ $bulan.prop('selectedIndex',0);
+ $tahun.val('');
+ $puskesmas.prop('selectedIndex',0);
  $penyakit.prop('selectedIndex',0);
- $tanggal.val("<?php echo static::e(date('Y-m-d')); ?>");
-
+ $BL.val('');
+ $BP.val('');
+ $LL.val('');
+ $LP.val('');
+ $id.val('');		
 	}
 	function clearError() {
+ $('#global-error').html("");
  $(".error").html("");
  $(".is-invalid").removeClass('is-invalid');
 	}
+
+
 
 </script>
 <?php $this->stopSection(); ?>

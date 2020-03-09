@@ -15,8 +15,5 @@ class M_Puskesmas extends Eloquent
 		return $this->belongsTo(new M_Kecamatan(), 'puskesmas_kecamatan_id');
 	}
 
-	public function dataPasien()
-	{
-		return $this->hasMany(new M_Pasien(), 'pasien_puskesmas_id', 'puskesmas_id');
-	}
+	
 }

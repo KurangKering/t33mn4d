@@ -9,7 +9,7 @@ class M_Penyakit extends Eloquent
 	protected $fillable = [
 		'penyakit_kode',
 		'penyakit_nama',
-		'penyakit_sst',
+		'penyakit_status',
 		'penyakit_kelompok_penyakit_id',
 	];
 

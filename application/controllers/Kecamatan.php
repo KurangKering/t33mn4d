@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kecamatan extends CI_Controller {
+class Kecamatan extends MY_Controller {
 
 	public function index()
 	{	
-		$data['kabupaten'] = $this->M_Kabupaten->get();
-		return view('kecamatan.index', compact('data'));
+		$this->data['kabupaten'] = $this->M_Kabupaten->get();
+		return view('kecamatan.index', array('data' => $this->data));
 
 		// $this->output
 		// ->set_content_type('application/json', 'utf-8')

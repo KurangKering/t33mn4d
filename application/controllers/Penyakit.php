@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Penyakit extends CI_Controller {
+class Penyakit extends MY_Controller {
 
 	public function index()
 	{
-		$data['kelompok'] = $this->M_Kelompok_Penyakit->get();
-		return view('penyakit.index', compact('data'));
+		$this->data['kelompok'] = $this->M_Kelompok_Penyakit->get();
+		return view('penyakit.index', array('data' => $this->data));
 	}
 
 	public function getDataPenyakit()
@@ -116,9 +116,9 @@ class Penyakit extends CI_Controller {
 
 
 	public function jsonDataPenyakit() {
-		$this->dt->select('p.penyakit_id, p.penyakit_kode, p.penyakit_nama, p.penyakit_status');
+		$this->dt->select('p.penyakit_id, p.penyakit_kode, p.penyakit_nama, p.penyakit_status, kp.kelompok_penyakit_nama');
 		$this->dt->from('penyakit p');
-		$this->dt->join('kelompok_penyakit jp', 'p.penyakit_kelompok_penyakit_id = jp.kelompok_penyakit_id');
+		$this->dt->join('kelompok_penyakit kp', 'p.penyakit_kelompok_penyakit_id = kp.kelompok_penyakit_id');
 
 		function callback_status($st)
 		{

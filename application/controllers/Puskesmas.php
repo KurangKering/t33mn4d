@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Puskesmas extends CI_Controller {
+class Puskesmas extends MY_Controller {
 
 	public function index()
 	{	
-		$data['kecamatan'] = $this->M_Kecamatan->get();
-		return view('puskesmas.index', compact('data'));
+		$this->data['kecamatan'] = $this->M_Kecamatan->get();
+		return view('puskesmas.index', array('data' => $this->data));
 
 		// $this->output
 		// ->set_content_type('application/json', 'utf-8')

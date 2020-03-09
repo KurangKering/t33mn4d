@@ -2,22 +2,22 @@
  <div class="menu_section">
  <h3>General</h3>
  <ul class="nav side-menu">
- <?php /*   <li><a><i class="fa fa-home"></i> Das <span class="fa fa-chevron-down"></span></a>
- <ul class="nav child_menu">
- <li><a href="<?php echo static::e(base_url('assets/templates/index.html')); ?>">Dashboard</a></li>
- <li><a href="<?php echo static::e(base_url('assets/templates/index2.html')); ?>">Dashboard2</a></li>
- <li><a href="<?php echo static::e(base_url('assets/templates/index3.html')); ?>">Dashboard3</a></li>
- </ul>
- </li> */ ?>
- <li><a><i class="fa fa-home"></i> Dashboard </a>
- <li><a href="<?php echo static::e(base_url('data-penyakit')); ?>"><i class="fa fa-home"></i> Data Penyakit </a>
- <li><a href="<?php echo static::e(base_url('data-kecamatan')); ?>"><i class="fa fa-home"></i> Data Kecamatan </a>
- <li><a href="<?php echo static::e(base_url('data-puskesmas')); ?>"><i class="fa fa-home"></i> Data Puskesmas </a>
- <li><a href="<?php echo static::e(base_url('data-pasien')); ?>"><i class="fa fa-home"></i> Data Pasien </a>
- <li><a href="<?php echo static::e(base_url('data-kesakitan')); ?>"><i class="fa fa-home"></i> Data Kesakitan </a>
- <li><a href="<?php echo static::e(base_url('data-treemap')); ?>"><i class="fa fa-home"></i> Visual Treemap </a>
+
+
+ <li><a href="<?php echo static::e(base_url("")); ?>"><i class="fa fa-circle"></i> Dashboard </a></li>
+
+ <?php if($data['auth']['akses'] == 1): ?> 
+ <li><a href="<?php echo static::e(base_url('data-penyakit')); ?>"><i class="fa fa-circle"></i> Data Penyakit </a></li>
+ <li><a href="<?php echo static::e(base_url('data-kecamatan')); ?>"><i class="fa fa-circle"></i> Data Kecamatan </a></li>
+ <li><a href="<?php echo static::e(base_url('data-puskesmas')); ?>"><i class="fa fa-circle"></i> Data Puskesmas </a></li>
+ <li><a href="<?php echo static::e(base_url('data-kesakitan')); ?>"><i class="fa fa-circle"></i> Data Kesakitan </a></li>
+ <?php elseif($data['auth']['akses'] == 2): ?> 
+ <li><a href="<?php echo static::e(base_url('data-treemap')); ?>"><i class="fa fa-circle"></i> Visual Treemap </a></li>
+ 
+ <?php endif; ?>
+
  </li>
  </ul>
- </div>
+</div>
 
 </div>

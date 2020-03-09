@@ -14,7 +14,9 @@
 		"php": ">=5.3.7",
 		"jenssegers/blade": "^1.2",
 		"eftec/bladeone": "^3.34",
-		"illuminate/database": "^5.8"
+		"illuminate/database": "^5.8",
+		"mistic100/randomcolor": "^1.0",
+		"dompdf/dompdf": "^0.8.5"
 	},
 	"autoload": {
 		"classmap": [

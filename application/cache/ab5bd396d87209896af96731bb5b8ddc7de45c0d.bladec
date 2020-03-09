@@ -34,6 +34,7 @@
  Kode
  </th>
  <th>Jenis Penyakit</th>
+ <th>Kelompok Penyakit</th>
  <th>Golongan Sebab Sakit</th>
  <th>Action</th>
  </tr>
@@ -144,6 +145,7 @@
  "columns": [
  {"data": "penyakit_kode"},
  {"data": "penyakit_status"},
+ {"data": "kelompok_penyakit_nama"},
  {"data": "penyakit_nama"},
  {"data": "action"},
  ],
