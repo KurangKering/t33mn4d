@@ -76,6 +76,7 @@
     $password = $("#password");
 
     $btn_login.click(function(e) {
+      $(this).attr('disabled', true);
 
       let post_data = {
         username: $username.val(),
@@ -86,6 +87,7 @@
 
       axios.post("{{ base_url("auth/login") }}", post_data)
       .then((res) => {
+        $(this).attr('disabled', false);
 
         response = res.data;
 
@@ -100,9 +102,13 @@
         });
        } else {
         window.location.href = "{{ base_url('') }}";
-       }
+      }
 
-     });
+    })
+      .catch(() => {
+        $(this).attr('disabled', false);
+
+      })
 
     });
     
