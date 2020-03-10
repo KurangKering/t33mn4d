@@ -60,9 +60,20 @@ class LibraryTreemap
     public function report()
     {   
 
-        $data['kesakitan'] = collect($this->getDataFromDB());
-        $data['kesakitan'] = array($data['kesakitan'][0]);
-        $html = $this->_ci->load->view('report/report', compact('data'), TRUE);
+        $d_kes = ($this->getDataFromDB());
+        $d_kes = array_slice($d_kes,0,222);
+        $d_kes = collect($d_kes);
+
+        $d_kes->each(function($q) {
+            $q->bulan = hBulan($q->kesakitan_bulan);
+        });
+        $html = null;
+        if (count($d_kes) > 0 ) {
+            $data['kesakitan'] = $d_kes;
+            $data['subtitle'] = $this->makeSubtitle();
+            $html = $this->_ci->load->view('report/report', compact('data'), TRUE);
+        }
+
         return $html;
     }
 

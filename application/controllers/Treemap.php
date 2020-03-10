@@ -2,6 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 Use illuminate\support\Collection;
 use \Colors\RandomColor;
+use Dompdf\Dompdf;
 class Treemap extends MY_Controller
 {
 
@@ -59,12 +60,16 @@ class Treemap extends MY_Controller
 			'success' => 0,
 		);
 		if ($html) {
-			$response['source'] = $html;
-			$response['success'] = 1;
+			
+			$this->load->library('Pdfgenerator');
+			$this->pdfgenerator->generate($html, 'data-kesakitan-'. date('d-m-Y H:i:s'), TRUE, 'A4','portrait');
+
+		} else {
+
 		}
+
+
 		
-		echo json_encode($response);
-		die();
 
 
 

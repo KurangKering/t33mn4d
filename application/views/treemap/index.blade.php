@@ -236,9 +236,10 @@
 		<div class="col-md-12">
 			<div class="x_panel">
 				<div class="x_title">
+
+					<button style="" class="btn-md btn " id="btn-print" ><i class="fa fa-print fa-1x"></i></button>
 					<ul class="nav navbar-right panel_toolbox">
 
-						<button type="button" class="btn btn-primary" id="btn-print">Print Me</button>
 						<a style="" class="btn-md btn " id="btn-back" href="javascript:void(0);"><i class="fa fa-backward fa-1x"></i></a>
 					</li>
 
@@ -260,7 +261,8 @@
 </div>
 
 </div>
-
+<div id="form-form">
+</div>
 @endsection
 @section('js-export')
 <script src="{{ base_url("assets/templates/vendors/highcharts/highcharts.js") }}"></script>
@@ -485,33 +487,50 @@
 		};
 
 
-		post = Object.keys(post).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(post[key])).join('&');
+		// post = Object.keys(post).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(post[key])).join('&');
 		
-		postData = post;
+		// postData = post;
 
-		axios.post("{{ base_url('data-treemap/report') }}", postData)
-		.then((res) => {
-			let data = res.data;
+		var   newForm = jQuery('<form>', {
+			'action' : '{{ base_url('data-treemap/report') }}',
+			'target' : '_blank',
+			'method' : 'post'
+		});
+
+		$.each(post, function(index, val) {
+			newForm.append(jQuery('<input>', {
+				'name' : index,
+				'value' : val,
+				'type' : 'hidden'
+			}));
+		});
+		newForm.appendTo($('#form-form'));
+		newForm.submit();
 
 
-			if (data.success == 0) {
+		// axios.post("{{ base_url('data-treemap/report') }}", postData)
+		// .then((res) => {
+		// 	let data = res.data;
 
-			} else {
-				let doc = new jsPDF();          
 
-				let source = data.source;
-				doc.fromHTML(
-					source,
-					15,
-					15,
-					{
-						'width': 180,
-					});
+		// 	if (data.success == 0) {
 
-				var blob = doc.output("blob");
-				window.open(URL.createObjectURL(blob));
-			}
-		})
+		// 	} else {
+		// 		let doc = new jsPDF();          
+
+		// 		let source = data.source;
+		// 		doc.fromHTML(
+		// 			source,
+		// 			15,
+		// 			15,
+		// 			{
+		// 				'width': 180,
+		// 			});
+
+		// 		var blob = doc.output("blob");
+		// 		window.open(URL.createObjectURL(blob));
+		// 	}
+		// })
 	}
 	function checkSequential(arr) {
 		seq =  arr.every((num, i) => i === arr.length - 1 || num < arr[i + 1]);
