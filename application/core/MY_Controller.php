@@ -12,14 +12,15 @@ class MY_Controller extends CI_Controller {
 		$priveleges = array (
 			'1' => array(
 				'dashboard' => 'dashboard',
-				'kecamatan' => 'kecamatan',
 				'kesakitan' => 'kesakitan',
-				'penyakit' => 'penyakit',
-				'puskesmas' => 'puskesmas',
 			),
 			'2' => array(
 				'dashboard' => 'dashboard',
 				'treemap' => 'treemap',
+				'kecamatan' => 'kecamatan',
+				'penyakit' => 'penyakit',
+ 				'puskesmas' => 'puskesmas',
+
 
 			)
 		);

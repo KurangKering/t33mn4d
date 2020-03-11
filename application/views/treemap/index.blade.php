@@ -7,6 +7,10 @@
 	#container {
 		min-height: 800px;
 	}
+
+	.highcharts-tooltip { 
+		z-index: 9999 !important;
+	}
 </style>
 @endsection
 @section('content')
@@ -302,7 +306,7 @@
 	let sortable = null;
 	let postData = null;
 	let $btnPrint = null;
-
+	let printKecamatanId = "";
 	$(function() {
 		$kabupaten = $("select[name=kabupaten]");
 		$kecamatan = $("select[name=kecamatan]");
@@ -439,9 +443,13 @@
 
 
 		$("#btn-back").click(function(event) {
+
+
 			if (previousLink.length <= 0) {
 				return;
 			}
+
+
 			idnya = previousLink.pop();
 			var dataSet = points.filter(function(ee) {
 				return ee.parentt == idnya;
@@ -449,9 +457,9 @@
 
 			insHighchart.series[0].update({data:dataSet});
 			insHighchart.hideLoading();
-			if (dataSet.length > 0 ) {
 
-
+			if ('flag' in insHighchart.series[0].data[0]) {
+				printKecamatanId = "";
 			}
 		});	
 
@@ -462,8 +470,19 @@
 
 	function printReport() {
 
-		var kabupaten = $kabupaten.val();
-		var kecamatan = $kecamatan.val();
+		if (printKecamatanId == "") {
+			Swal.fire({
+				title: 'Gagal!',
+				text: "Mohon Pilih Kecamatan",
+				icon: 'error',
+				timer: 1000,
+				showConfirmButton: false,
+
+
+			});
+			return;
+		}
+		var kecamatan = printKecamatanId;
 		var puskesmas = $puskesmas.val();
 		var status = $status.val();
 		var penyakit = $penyakit.val();
@@ -476,7 +495,6 @@
 
 
 		post = {
-			kabupaten,
 			kecamatan,
 			puskesmas,
 			status,
@@ -487,25 +505,31 @@
 		};
 
 
-		// post = Object.keys(post).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(post[key])).join('&');
+		postData = Object.keys(post).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(post[key])).join('&');
 		
 		// postData = post;
 
-		var   newForm = jQuery('<form>', {
-			'action' : '{{ base_url('data-treemap/report') }}',
-			'target' : '_blank',
-			'method' : 'post'
-		});
+		// var   newForm = jQuery('<form>', {
+		// 	'action' : '{{ base_url('data-treemap/report') }}',
+		// 	'target' : '_blank',
+		// 	'method' : 'post'
+		// });
 
-		$.each(post, function(index, val) {
-			newForm.append(jQuery('<input>', {
-				'name' : index,
-				'value' : val,
-				'type' : 'hidden'
-			}));
-		});
-		newForm.appendTo($('#form-form'));
-		newForm.submit();
+		// $.each(post, function(index, val) {
+		// 	newForm.append(jQuery('<input>', {
+		// 		'name' : index,
+		// 		'value' : val,
+		// 		'type' : 'hidden'
+		// 	}));
+		// });
+		// newForm.appendTo($('#form-form'));
+		// newForm.submit();
+
+		 $("<iframe>")                             // create a new iframe element
+        .hide()                               // make it invisible
+        .attr("src", "{{ base_url('data-treemap/report?') }}"+postData) // point the iframe to the page you want to print
+        .appendTo("body");                    // add iframe to the DOM to cause it to load the page
+
 
 
 		// axios.post("{{ base_url('data-treemap/report') }}", postData)
@@ -545,6 +569,7 @@
 
 		var kabupaten = $kabupaten.val();
 		var kecamatan = $kecamatan.val();
+		printKecamatanId = kecamatan;
 		var puskesmas = $puskesmas.val();
 		var status = $status.val();
 		var penyakit = $penyakit.val();
@@ -577,16 +602,27 @@
 		fetchData(post).then(r =>
 		{
 			points = r.data;
-			isitable = r.table;
-			$tableHaji.clear();
-			$tableHaji.rows.add(isitable);
-			$tableHaji.draw();
+
+
+			// isitable = r.table;
+			// // $tableHaji.clear();
+			// // $tableHaji.rows.add(isitable);
+			// // $tableHaji.draw();
 			dataSet = points.filter(function($el) {
 				return $el.parentt == "";
 			});
 			chart.setSubtitle({text:r.subtitle});
 			chart.series[0].setData(dataSet);
 			chart.hideLoading();
+
+
+			if (points.length < 1) {
+				$("#btn-print").attr('disabled', true);
+				$("#btn-back").attr('disabled', true);
+			} else {
+				$("#btn-print").attr('disabled', false);
+				$("#btn-back").attr('disabled', false);
+			}
 
 		}
 		);
@@ -606,10 +642,17 @@
 						enabled: true,
 						style: {
 							fontSize: "14px",
-							textOutline: false,
+							// textOutline: "3px contrast",
 
 
-						}
+						},
+						overflow: "none",
+
+						// useHTML: true,
+						// formatter() {
+						// 	return "<div class=\"text-center\">" + this.point.name + "<br>" + this.point.value+ "</div>";
+						// }
+
 					},
 					hover: {
 						color:'red'
@@ -619,11 +662,16 @@
 
 					data:[],
 					point: {
-						
+
 						events: {
 							click: function(e) {
 								id = this.id;
 								parentt = this.parentt;
+
+								if ('flag' in this && this.flag == 'kecamatan') {
+									printKecamatanId = this.flag_id;
+
+								}
 								var dataSet = points.filter(function(ee) {
 									return ee.parentt == this.id;
 								});
@@ -636,10 +684,7 @@
 
 								}
 
-								// if (this.status == 4) {
-								// 	$("#content-peserta").html(this.description);
-								// 	$("#modalDetail").modal('show');
-								// }
+								
 
 
 							},
@@ -677,6 +722,8 @@
 					}
 				},
 				tooltip: {
+					outside: true,
+
 					style: {
 						fontSize: "16px",
 						'z-index': '9999',

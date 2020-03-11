@@ -4,20 +4,23 @@
     <ul class="nav side-menu">
 
 
-     <li><a href="{{ base_url("") }}"><i class="fa fa-circle"></i> Dashboard </a></li>
+       <li><a href="{{ base_url("") }}"><i class="fa fa-circle"></i> Dashboard </a></li>
 
-     @if ($data['auth']['akses'] == 1) 
-     <li><a href="{{ base_url('data-penyakit') }}"><i class="fa fa-circle"></i> Data Penyakit </a></li>
-     <li><a href="{{ base_url('data-kecamatan') }}"><i class="fa fa-circle"></i> Data Kecamatan </a></li>
-     <li><a href="{{ base_url('data-puskesmas') }}"><i class="fa fa-circle"></i> Data Puskesmas </a></li>
-     <li><a href="{{ base_url('data-kesakitan') }}"><i class="fa fa-circle"></i> Data Kesakitan </a></li>
-     @elseif ($data['auth']['akses'] == 2) 
-     <li><a href="{{ base_url('data-treemap') }}"><i class="fa fa-circle"></i> Visual Treemap </a></li>
-     
-     @endif
+       @if ($data['auth']['akses'] == 1) 
+       <li><a href="{{ base_url('data-kesakitan') }}"><i class="fa fa-circle"></i> Data Kesakitan </a></li>
+       @elseif ($data['auth']['akses'] == 2) 
+       <li><a href="{{ base_url('data-penyakit') }}"><i class="fa fa-circle"></i> Data Penyakit </a></li>
+
+       <li><a href="{{ base_url('data-kecamatan') }}"><i class="fa fa-circle"></i> Data Kecamatan </a></li>
+
+       <li><a href="{{ base_url('data-puskesmas') }}"><i class="fa fa-circle"></i> Data Puskesmas </a></li>
+       
+       <li><a href="{{ base_url('data-treemap') }}"><i class="fa fa-circle"></i> Visual Treemap </a></li>
+       
+       @endif
 
    </li>
- </ul>
+</ul>
 </div>
 
 </div>

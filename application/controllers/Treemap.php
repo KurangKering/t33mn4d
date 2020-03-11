@@ -28,14 +28,14 @@ class Treemap extends MY_Controller
 	public function report()
 	{
 
-		$kabupaten = $this->input->post('kabupaten');
-		$kecamatan = $this->input->post('kecamatan');
-		$puskesmas = $this->input->post('puskesmas');
-		$status    = $this->input->post('status');
-		$penyakit  = $this->input->post('penyakit');
-		$tahun     = $this->input->post('tahun') ?? date('Y');
-		$bulan     = $this->input->post('bulan') ?? date('n');
-		$penyakitTerbanyak = $this->input->post('terbanyak');
+		$kabupaten = $this->input->get('kabupaten');
+		$kecamatan = $this->input->get('kecamatan');
+		$puskesmas = $this->input->get('puskesmas');
+		$status    = $this->input->get('status');
+		$penyakit  = $this->input->get('penyakit');
+		$tahun     = $this->input->get('tahun') ?? date('Y');
+		$bulan     = $this->input->get('bulan') ?? date('n');
+		$penyakitTerbanyak = $this->input->get('terbanyak');
 
 
 		$params = array(
@@ -59,14 +59,17 @@ class Treemap extends MY_Controller
 			'source' => '',
 			'success' => 0,
 		);
-		if ($html) {
+
+		echo $html;
+
+		// if ($html) {
 			
-			$this->load->library('Pdfgenerator');
-			$this->pdfgenerator->generate($html, 'data-kesakitan-'. date('d-m-Y H:i:s'), TRUE, 'A4','portrait');
+		// 	$this->load->library('Pdfgenerator');
+		// 	$this->pdfgenerator->generate($html, 'data-kesakitan-'. date('d-m-Y H:i:s'), TRUE, 'A4','portrait');
 
-		} else {
+		// } else {
 
-		}
+		// }
 
 
 		

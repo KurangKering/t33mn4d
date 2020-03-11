@@ -7,7 +7,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 1.42857143;
-    margin: 0;
+    margin-bottom: 0;
 
   }
 
@@ -289,33 +289,33 @@
   }
   .table > tbody + tbody {
     border-top: 2px solid #ddd;
-    }
-    .table .table {
-      background-color: #fff;
-    }
-   
-    .table-bordered {
-      border: 1px solid #ddd;
-    }
-    .table-bordered > thead > tr > th,
-    .table-bordered > tbody > tr > th,
-    .table-bordered > tfoot > tr > th,
-    .table-bordered > thead > tr > td,
-    .table-bordered > tbody > tr > td,
-    .table-bordered > tfoot > tr > td {
-      border: 1px solid #ddd;
-    }
-    .table-bordered > thead > tr > th,
-    .table-bordered > thead > tr > td {
-      border-bottom-width: 2px;
-    }
+  }
+  .table .table {
+    background-color: #fff;
+  }
+
+  .table-bordered {
+    border: 1px solid #ddd;
+  }
+  .table-bordered > thead > tr > th,
+  .table-bordered > tbody > tr > th,
+  .table-bordered > tfoot > tr > th,
+  .table-bordered > thead > tr > td,
+  .table-bordered > tbody > tr > td,
+  .table-bordered > tfoot > tr > td {
+    border: 1px solid #ddd;
+  }
+  .table-bordered > thead > tr > th,
+  .table-bordered > thead > tr > td {
+    border-bottom-width: 2px;
+  }
   
 
-    /*# sourceMappingURL=bootstrap.css.map */
+  /*# sourceMappingURL=bootstrap.css.map */
 
 
 
-  </style>
+</style>
 </head>
 <body>
   <h3 class="text-center">Data Kesakitan</h3>  
@@ -335,6 +335,7 @@
   <tbody>
    <?php 
    $no = 1;
+   $total = 0;
    ?>
    <?php foreach ($data['kesakitan'] as $k => $kesakitan): ?>
     <tr>
@@ -345,9 +346,24 @@
      <td><?= $kesakitan->puskesmas_nama ?></td>
      <td><?= $kesakitan->kesakitan_jumlah ?></td>
    </tr>
+   <?php
+   $total += $kesakitan->kesakitan_jumlah
+   ?>
 
  <?php endforeach ?>
+ <tr>
+   <td colspan="5" style="text-align: right;font-weight: bold;">Total :</td>
+   <td><?php echo $total ?></td>
+ </tr>
 </tbody>
+
 </table>
+<script src="<?= base_url('assets/templates/vendors/jquery/dist/jquery.min.js') ?>"></script>
+
+<script>
+ $(document).ready(function() {
+   window.print();
+ });
+</script>
 </body>
 </html>
