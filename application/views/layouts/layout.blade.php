@@ -22,6 +22,12 @@
   <link href="{{ base_url('assets/templates/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ base_url('assets/templates/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ base_url('assets/templates/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
+  <style>
+
+    .gambar-penuh {
+      width: 80% !important;
+    }
+  </style>
   @yield('css-export')
 
 
@@ -37,71 +43,82 @@
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
           <div class="navbar nav_title" style="border: 0;">
-            <a href="javascript:void(0);" class="site_title"><i class="fa fa-paw"></i> <span>TREEMAP</span></a>
+           {{--  <a href="javascript:void(0);" class="site_title"><i class="fa fa-paw"></i> 
+
+           </a> --}}
+           <div class="site_title">
+
+             <a href="{{ base_url() }}" style="color: inherit;">
+              <img id="logo-kiri" style="width: 25%; height: 100%;" src="{{ base_url('assets/images/kampar.png') }}">
+              <span>SISKES</span>
+            </a>
+
+
           </div>
-
-          <div class="clearfix"></div>
-
-          <!-- menu profile quick info -->
-          <div class="profile clearfix">
-            <div class="profile_pic">
-              <img src="{{ base_url('assets/templates/images/img.jpg') }}" alt="..." class="img-circle profile_img">
-            </div>
-            <div class="profile_info">
-              <span>Welcome,</span>
-              <h2>{{ $data['auth']['role'] }}</h2>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-          <!-- /menu profile quick info -->
-
-          <br />
-
-          <!-- sidebar menu -->
-          @include('layouts.sidebar')
-          <!-- /sidebar menu -->
-
-          <!-- /menu footer buttons -->
-          
-          <!-- /menu footer buttons -->
         </div>
-      </div>
 
-      <!-- top navigation -->
-      <div class="top_nav">
-        <div class="nav_menu">
-          <div class="nav toggle">
-            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+        <div class="clearfix"></div>
+
+        <!-- menu profile quick info -->
+        <div class="profile clearfix">
+          <div class="profile_pic">
+            <img src="{{ base_url('assets/images/unknown_profile.png') }}" alt="..." class="img-circle profile_img">
           </div>
-          <nav class="nav navbar-nav">
-            <ul class=" navbar-right">
+          <div class="profile_info">
+            <span>Welcome,</span>
+            <h2>{{ $data['auth']['role'] }}</h2>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <!-- /menu profile quick info -->
 
-             <li class="nav-item " style="margin-right: 15px;">
+        <br />
+
+        <!-- sidebar menu -->
+        @include('layouts.sidebar')
+        <!-- /sidebar menu -->
+
+        <!-- /menu footer buttons -->
+
+        <!-- /menu footer buttons -->
+      </div>
+    </div>
+
+    <!-- top navigation -->
+    <div class="top_nav">
+      <div class="nav_menu">
+        <div class="nav toggle">
+          <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+        </div>
+        <nav class="nav navbar-nav">
+          <ul class=" navbar-right">
+
+           <li class="nav-item " style="margin-right: 15px;">
 
              <a href="{{ base_url('logout') }}">Logout</a>
-            </li>
+           </li>
 
-          </ul>
-        </nav>
-      </div>
-    </div>
-    <!-- /top navigation -->
+         </ul>
+       </nav>
+     </div>
+   </div>
+   <!-- /top navigation -->
 
-    <!-- page content -->
-    <div class="right_col" role="main">
-      @yield('content')
-    </div>
-    <!-- /page content -->
-
-    <!-- footer content -->
-    <footer>
-      <div class="pull-right">
-        Gentelella - Bootstrap Admin Template by <a href="{{ base_url('assets/templates/https://colorlib.com') }}">Colorlib</a>
-      </div>
-      <div class="clearfix"></div>
-    </footer>
-    <!-- /footer content -->
+   <!-- page content -->
+   <div class="right_col" role="main">
+    @yield('content')
   </div>
+  <!-- /page content -->
+
+  <!-- footer content -->
+  <footer>
+    <div class="pull-right">
+      Gentelella - Bootstrap Admin Template by <a href="{{ base_url('assets/templates/https://colorlib.com') }}">Colorlib</a>
+    </div>
+    <div class="clearfix"></div>
+  </footer>
+  <!-- /footer content -->
+</div>
 </div>
 
 <!-- jQuery -->

@@ -10,73 +10,131 @@
 
   <title>Login Page |</title>
 
-  <!-- Bootstrap -->
   <link href="{{ base_url('assets/templates/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
-  <!-- Font Awesome -->
   <link href="{{ base_url('assets/templates/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-  <!-- NProgress -->
-  <link href="{{ base_url('assets/templates/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
-  <!-- Animate.css -->
-  <link href="{{ base_url('assets/templates/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
-
-  <!-- Custom Theme Style -->
+  <link rel="stylesheet" href="{{ base_url('assets/css/login.css') }}" />
   <link href="{{ base_url('assets/templates/build/css/custom.min.css') }}" rel="stylesheet">
+
+
+  <!--inline styles related to this page-->
+  <style type="text/css">
+    .login-layout {
+      background: #ffffff;
+      background-image: url("{{ base_url('assets/images/back.jpg') }}");
+
+
+    }
+
+  </style>
 </head>
 
-<body class="login">
-  <div>
-    <a class="hiddenanchor" id="signup"></a>
-    <a class="hiddenanchor" id="signin"></a>
+<body class="login-layout">
+  <div class="main-container container-fluid">
+    <div class="main-content">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="login-container">
 
-    <div class="login_wrapper">
-      <div class="animate form login_form">
-        <section class="login_content">
-          <form>
-            <h1>Login Form</h1>
-            <div>
-              <input type="text" id="username" class="form-control" placeholder="Username" required="" />
+
+            <div class="row-fluid">
+              <div class="position-relative">
+
+                <div id="login-box" class="login-box visible widget-box no-border">
+                  <div class="widget-body">
+
+                    <div class="widget-main">
+
+                      <div id="label-perusahaan">
+                        <h4>SISTEM INFORMASI KESAKITAN KABUPATEN KAMPAR</h4>
+
+                      </div>
+                      <div id="logo">
+                        <img src="{{ base_url('assets/images/kampar.png') }}" class="img-polaroid"/>
+                      </div>
+
+                      <form id="form-login">
+                        <fieldset>
+                          <div class="form-group">
+                            <label class="block clearfix">
+                              <span class="block input-icon input-icon-right">
+                                <input required id="username" name="username" type="text" class="span12" placeholder="Username" autocomplete="off" autofocus />
+                                <i class="icon-user"></i>
+                              </span>
+                            </label>
+                          </div>
+
+                          <div class="form-group">
+                            <label class="block clearfix">
+                              <span class="block input-icon input-icon-right">
+                                <input required id="password" name="password" type="password" class="span12" placeholder="Password" autocomplete="off" />
+                                <i class="icon-lock"></i>
+                              </span>
+                            </label>
+                          </div>
+                            <!--
+                            <div class="form-group">
+                            <label class="block clearfix">
+                              <label>Tahun Anggaran</label>
+                              <select  placeholder="Tahun Anggaran..." style="width:100%;">
+                                <option value="AL" />2016
+                                <option value="AK" />2017
+                                <option value="AZ" />2018
+                              </select>
+                            </label>
+                            </div>
+                          -->
+                          <div class="form-group">
+
+
+                            <button id="btn-login" class="width-35 pull-right btn btn-small btn-primary" type="submit">
+                              <i class="icon-key"></i>
+                              Login
+                            </button>
+                          </div>
+
+
+                        </fieldset>
+                      </form>
+
+
+                    </div><!--/widget-main-->
+
+                    
+                  </div><!--/widget-body-->
+                </div><!--/login-box-->
+
+                <!--/forgot-box-->
+
+                <!--/signup-box-->
+              </div><!--/position-relative-->
             </div>
-            <div>
-              <input type="password" id="password" class="form-control" placeholder="Password" required="" />
-            </div>
-            <div>
-             <button class="btn btn-primary" type="button" id="btn-login">Login</button>
-           </div>
-
-           <div class="clearfix"></div>
-
-           <div class="separator">
-
-            <div class="clearfix"></div>
-            <br />
-
-
           </div>
-        </form>
-      </section>
+        </div><!--/.span-->
+      </div><!--/.row-fluid-->
     </div>
+  </div><!--/.main-container-->
 
+  <!--basic scripts-->
+  <script src="{{ base_url('assets/templates/vendors/jquery/dist/jquery.min.js') }}"></script>
 
-  </div>
-</div>
-<script src="{{ base_url('assets/templates/vendors/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ base_url('assets/axios.min.js') }}"></script>
+  <script src="{{ base_url('assets/sweetalert2.all.min.js') }}"></script>
+  <script>
+   let $btn_login = null;
+   let $username = null;
+   let $password = null;
 
-<script src="{{ base_url('assets/axios.min.js') }}"></script>
-<script src="{{ base_url('assets/sweetalert2.all.min.js') }}"></script>
-
-
-<script>
-  let $btn_login = null;
-  let $username = null;
-  let $password = null;
-
-  $(function() {
+   $(function() {
     $btn_login = $("#btn-login");
     $username = $("#username");
     $password = $("#password");
 
-    $btn_login.click(function(e) {
-      $(this).attr('disabled', true);
+    $("#form-login").submit(function(e) {
+
+      e.preventDefault();
+
+      $(this).find(':submit').attr('disabled','disabled');
+
 
       let post_data = {
         username: $username.val(),
@@ -87,7 +145,8 @@
 
       axios.post("{{ base_url("auth/login") }}", post_data)
       .then((res) => {
-        $(this).attr('disabled', false);
+      $(this).find(':submit').attr('disabled',false);
+
 
         response = res.data;
 
@@ -106,7 +165,8 @@
 
     })
       .catch(() => {
-        $(this).attr('disabled', false);
+      $(this).find(':submit').attr('disabled',false);
+
 
       })
 
@@ -115,4 +175,5 @@
   });
 </script>
 </body>
+
 </html>

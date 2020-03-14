@@ -22,6 +22,12 @@
  <link href="<?php echo static::e(base_url('assets/templates/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')); ?>" rel="stylesheet">
  <link href="<?php echo static::e(base_url('assets/templates/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')); ?>" rel="stylesheet">
  <link href="<?php echo static::e(base_url('assets/templates/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')); ?>" rel="stylesheet">
+ <style>
+
+ .gambar-penuh {
+ width: 80% !important;
+ }
+ </style>
  <?php echo $this->yieldContent('css-export'); ?>
 
 
@@ -37,7 +43,18 @@
  <div class="col-md-3 left_col">
  <div class="left_col scroll-view">
  <div class="navbar nav_title" style="border: 0;">
- <a href="javascript:void(0);" class="site_title"><i class="fa fa-paw"></i> <span>TREEMAP</span></a>
+ <?php /*  <a href="javascript:void(0);" class="site_title"><i class="fa fa-paw"></i> 
+
+ </a> */ ?>
+ <div class="site_title">
+
+ <a href="<?php echo static::e(base_url()); ?>" style="color: inherit;">
+ <img id="logo-kiri" style="width: 25%; height: 100%;" src="<?php echo static::e(base_url('assets/images/kampar.png')); ?>">
+ <span>SISKES</span>
+ </a>
+
+
+ </div>
  </div>
 
  <div class="clearfix"></div>
@@ -45,7 +62,7 @@
  <!-- menu profile quick info -->
  <div class="profile clearfix">
  <div class="profile_pic">
- <img src="<?php echo static::e(base_url('assets/templates/images/img.jpg')); ?>" alt="..." class="img-circle profile_img">
+ <img src="<?php echo static::e(base_url('assets/images/unknown_profile.png')); ?>" alt="..." class="img-circle profile_img">
  </div>
  <div class="profile_info">
  <span>Welcome,</span>
@@ -62,7 +79,7 @@
  <!-- /sidebar menu -->
 
  <!-- /menu footer buttons -->
- 
+
  <!-- /menu footer buttons -->
  </div>
  </div>
@@ -101,7 +118,7 @@
  <div class="clearfix"></div>
  </footer>
  <!-- /footer content -->
- </div>
+</div>
 </div>
 
 <!-- jQuery -->
