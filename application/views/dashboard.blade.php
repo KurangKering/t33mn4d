@@ -1,19 +1,12 @@
 @section('css-inline')
 <style>
-	#logo-web {
-		float: left;
-	}
+	
 
 	#logo-web > img {
-		width: 100px;
+		width: 100%;
 	}
-	#judul-sistem {
-		float: left;
-		margin-left: 20px;
 
-	}
 	#judul-sistem > h1 {
-		line-height: 300%;
 		margin: 0;
 		font-weight: 600;
 		color: #9900ff;
@@ -21,7 +14,6 @@
 
 	@media (max-width:1262px) {
 		#logo-web {
-			float: none;
 			text-align: center;
 		}
 
@@ -29,7 +21,6 @@
 			width: 100px;
 		}
 		#judul-sistem {
-			float: none;
 			text-align: center;
 
 		}
@@ -41,6 +32,7 @@
 		}
 	}
 
+
 </style>
 @endsection
 @extends('layouts.layout')
@@ -51,16 +43,22 @@
 	<div class="col-md-12">
 		<div class="x_panel">
 			<div class="x_content">
+				<div class="col-md-2">
+					
 
-				<div id="logo-web">
-					<img  src="{{ base_url('assets/images/kampar.png') }}" alt="">	
-				</div>
-				
-				<div id="judul-sistem">
-					<h1>SISTEM KESAKITAN KABUPATEN KAMPAR</h1>
-				</div>
+					<div id="logo-web">
+						<img  src="{{ base_url('assets/images/kampar.png') }}" alt="">	
+					</div>
 
-				
+
+					
+				</div>
+				<div class="col-md-10">
+					<div id="judul-sistem">
+						<h1>SISTEM INFORMASI PENYAKIT MENULAR DAN TIDAK MENULAR KABUPATEN KAMPAR</h1>
+					</div>
+					
+				</div>
 			</div>
 		</div>
 	</div>
