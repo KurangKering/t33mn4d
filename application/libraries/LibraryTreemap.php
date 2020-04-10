@@ -157,7 +157,7 @@ class LibraryTreemap
 
 			$items_kab = array(
 				'Kota / Kabupaten' => $vkab->kabupaten_nama,
-				'Jumlah' => $c_jum_kab,
+				'Jumlah' => bilangan($c_jum_kab),
 			);
 
 			$html_kab  = $this->htmlVerticalHeaderTable($items_kab);
@@ -186,7 +186,7 @@ class LibraryTreemap
 				$items_kec = array(
 					'Kota / Kabupaten' => $vkab->kabupaten_nama,
 					'Kecamatan'        => $vkec->kecamatan_nama,
-					'Jumlah' => $c_jum_kec,
+					'Jumlah' => bilangan($c_jum_kec),
 
 				);
 
@@ -218,7 +218,7 @@ class LibraryTreemap
 						'Kota / Kabupaten' => $vkab->kabupaten_nama,
 						'Kecamatan'        => $vkec->kecamatan_nama,
 						'Puskesmas'        => $vpus->puskesmas_nama,
-						'Jumlah' => $c_jum_pus,
+						'Jumlah' => bilangan($c_jum_pus),
 
 					);
 
@@ -250,7 +250,7 @@ class LibraryTreemap
 							'Kecamatan'        => $vkec->kecamatan_nama,
 							'Puskesmas'        => $vpus->puskesmas_nama,
 							'Status'           => $vstat,
-							'Jumlah' => $c_jum_stat,
+							'Jumlah' => bilangan($c_jum_stat),
 
 						);
 
@@ -285,7 +285,7 @@ class LibraryTreemap
 								'Puskesmas'        => $vpus->puskesmas_nama,
 								'Status'           => $vstat,
 								'Penyakit'         => $vpen->penyakit_nama,
-								'Jumlah' => $c_jum_pen,
+								'Jumlah' => bilangan($c_jum_pen),
 
 							);
 
@@ -320,7 +320,7 @@ class LibraryTreemap
 									'Status'           => $vstat,
 									'Penyakit'         => $vpen->penyakit_nama,
 									'Bulan'            => $h_bul[$vbul],
-									'Jumlah'      => $c_jum_bul,
+									'Jumlah'      => bilangan($c_jum_bul),
 								);
 
 								$html_bul  = $this->htmlVerticalHeaderTable($items_bul);

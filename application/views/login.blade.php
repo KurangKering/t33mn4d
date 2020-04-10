@@ -67,7 +67,7 @@
                             <label class="block clearfix">
                               <span class="block input-icon input-icon-right">
                                 <input required id="password" name="password" type="password" class="span12" placeholder="Password" autocomplete="off" />
-                                <i class="icon-lock"></i>
+                                <i class="icon-eye toggle-password" toggle="#password"></i>
                               </span>
                             </label>
                           </div>
@@ -125,6 +125,9 @@
    let $password = null;
 
    $(function() {
+
+
+
     $btn_login = $("#btn-login");
     $username = $("#username");
     $password = $("#password");
@@ -145,7 +148,7 @@
 
       axios.post("{{ base_url("auth/login") }}", post_data)
       .then((res) => {
-      $(this).find(':submit').attr('disabled',false);
+        $(this).find(':submit').attr('disabled',false);
 
 
         response = res.data;
@@ -165,11 +168,22 @@
 
     })
       .catch(() => {
-      $(this).find(':submit').attr('disabled',false);
+        $(this).find(':submit').attr('disabled',false);
 
 
       })
 
+    });
+
+    $(".toggle-password").click(function() {
+
+      $(this).toggleClass("icon-eye icon-eye-slash");
+      var input = $($(this).attr("toggle"));
+      if (input.attr("type") == "password") {
+        input.attr("type", "text");
+      } else {
+        input.attr("type", "password");
+      }
     });
     
   });

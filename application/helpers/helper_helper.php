@@ -37,7 +37,7 @@ if (!function_exists('hJK')) {
 		$daftar =  array(
 			'L' => 'Laki-Laki',
 			'P' => 'Perempuan',
-		
+
 		);
 		if ($status) {
 			return $daftar[$status];
@@ -50,7 +50,7 @@ if (!function_exists('hStatusPenyakit')) {
 		$daftar =  array(
 			'1' => 'Tidak Menular',
 			'2' => 'Menular',
-		
+
 		);
 		if ($status) {
 			return $daftar[$status];
@@ -63,13 +63,23 @@ if (!function_exists('hRole')) {
 		$roles =  array(
 			'1' => 'Puskesmas',
 			'2' => 'Staff',
-		
+
 		);
 		if ($akses) {
 			return $roles[$akses];
 		} 
 		return $daftar;
 	}
+}
+
+if (!function_exists('bilangan')) {
+	function bilangan($angka){
+
+		$bilangan = number_format($angka, 0, ',', '.');
+		return $bilangan;
+
+	}
+
 }
 
 

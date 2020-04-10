@@ -672,6 +672,13 @@ a [class^="icon-"] {
     content: "\f0f4";
 }
 
+.icon-eye:before {
+    content: "\f06e";
+}
+.icon-eye-slash:before {
+    content: "\f070";
+}
+
 html {
     min-height: 100%;
     position: relative;
