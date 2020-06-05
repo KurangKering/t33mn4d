@@ -55,7 +55,7 @@
 				</div>
 				<div class="col-md-10">
 					<div id="judul-sistem">
-						<h1>SISTEM INFORMASI PENYAKIT MENULAR DAN TIDAK MENULAR KABUPATEN KAMPAR</h1>
+						<h1>SISTEM INFORMASI PENYAKIT MENULAR DAN PENYAKIT TIDAK MENULAR KABUPATEN KAMPAR</h1>
 					</div>
 					
 				</div>

@@ -6,7 +6,7 @@
 <div class="">
 	<div class="page-title">
 		<div class="title_left">
-			<h3>Data Penyakit</h3>
+			<h3>Data ICD 10</h3>
 		</div>
 
 		<div class="title_right">
@@ -34,7 +34,7 @@
 											Kode
 										</th>
 										<th>Jenis Penyakit</th>
-										<th>Kelompok Penyakit</th>
+										<th>Kelompok Utama Penyakit</th>
 										<th>Golongan Sebab Sakit</th>
 										<th>Action</th>
 									</tr>
@@ -66,31 +66,31 @@
 					<form>
 						<input type="hidden" id="id" value="">
 						<div class="form-group">
-							<label for="kode" class="col-form-label">Kode:</label>
+							<label for="kode" class="col-form-label">Kode</label>
 							<input type="text" class="form-control" id="kode">
 							<div class="error"></div>
 						</div>
 						<div class="form-group">
-							<label for="message-text" class="col-form-label">Jenis:</label>
+							<label for="message-text" class="col-form-label">Kelompok Utama Penyakit</label>
 							<select  id="kelompok" class="form-control">
 								@foreach ($data['kelompok'] as $kelompok)
-								<option value="{{ $kelompok->kelompok_penyakit_id }}">{{ $kelompok->kelompok_penyakit_kode }}</option>
+								<option value="{{ $kelompok->kelompok_penyakit_id }}">{{ $kelompok->kelompok_penyakit_nama }}</option>
 								@endforeach
 							</select>
 							<div class="error"></div>
 
 						</div>
 						<div class="form-group">
-							<label for="message-text" class="col-form-label">Nama Penyakit:</label>
+							<label for="message-text" class="col-form-label">Golongan Sebab Sakit</label>
 							<input type="text"  id="nama" class="form-control"></input>
 							<div class="error"></div>
 
 						</div>
 						<div class="form-group">
-							<label for="message-text" class="col-form-label">Menuluar:</label>
+							<label for="message-text" class="col-form-label">Menular/Tidak</label>
 							<select  id="menular" class="form-control">
 								<option value="1">Tidak</option>
-								<option value="2">Iya</option>
+								<option value="2">Menular</option>
 							</select>
 							<div class="error"></div>
 

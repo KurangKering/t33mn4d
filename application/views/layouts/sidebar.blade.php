@@ -4,12 +4,12 @@
     <ul class="nav side-menu">
 
 
-       <li><a href="{{ base_url("") }}"><i class="fa fa-circle"></i> Dashboard </a></li>
+       <li><a href="{{ base_url("") }}"><i class="fa fa-circle"></i> Beranda </a></li>
 
        @if ($data['auth']['akses'] == 1) 
-       <li><a href="{{ base_url('data-kesakitan') }}"><i class="fa fa-circle"></i> Data Kesakitan </a></li>
+       <li><a href="{{ base_url('data-kesakitan') }}"><i class="fa fa-circle"></i> Data Penyakit </a></li>
        @elseif ($data['auth']['akses'] == 2) 
-       <li><a href="{{ base_url('data-penyakit') }}"><i class="fa fa-circle"></i> Data Penyakit </a></li>
+       <li><a href="{{ base_url('data-penyakit') }}"><i class="fa fa-circle"></i> Data ICD 10 </a></li>
 
        <li><a href="{{ base_url('data-kecamatan') }}"><i class="fa fa-circle"></i> Data Kecamatan </a></li>
 

@@ -7,8 +7,6 @@
 	#container {
  margin: 0 auto;
  height: 800px;
- width: 1037px;
- 
 	}
 	
 	
@@ -245,8 +243,8 @@
 	
 	<div class="row">
  <div class="col-md-12">
- <div class="x_panel">
- <div class="x_title">
+ <div class="x_panel" >
+ <div class="x_title" id="header-panel-container">
 
  <button style="" class="btn-md btn " id="btn-print" ><i class="fa fa-print fa-1x"></i></button>
  <ul class="nav navbar-right panel_toolbox">
@@ -259,7 +257,7 @@
  <div class="clearfix"></div>
  </div>
 
- <div class="x_content">
+ <div class="x_content" id="panel-container">
 
  <figure class="highcharts-figure">
 
@@ -314,7 +312,29 @@
 	let postData = null;
 	let $btnPrint = null;
 	let printKecamatanId = "";
+
+	let widthContainer = $("#container").width();
+	let widthPanel = $("#panel-container").width();
+	let widthHeaderCard = $("#header-panel-container").width();
+
+
+
+	$("#container").css({
+ width: widthContainer,
+	});
+	$("#panel-container").css({
+ width: widthPanel,
+	});
+
+	$("#header-panel-container").css({
+ width: widthHeaderCard,
+	});
+
+	
 	$(function() {
+
+
+
  $kabupaten = $("select[name=kabupaten]");
  $kecamatan = $("select[name=kecamatan]");
  $puskesmas = $("select[name=puskesmas]");
@@ -642,7 +662,7 @@
  series: [{
  type: 'treemap',
  alternateStartingDirection: true,
- layoutAlgorithm: 'squarified',
+ layoutAlgorithm: 'strip',
  allowDrillToNode: true,
  animation:true,
  dataLabels: {

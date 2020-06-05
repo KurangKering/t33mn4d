@@ -6,7 +6,7 @@
 <div class="">
 	<div class="page-title">
 		<div class="title_left">
-			<h3>Data Kesakitan</h3>
+			<h3>Data Penyakit</h3>
 		</div>
 
 		<div class="title_right">
@@ -35,7 +35,7 @@
 										<th>Bulan</th>
 										<th>Tahun</th>
 										<th>Puskesmas</th>
-										<th>Penyakit</th>
+										<th> Penyakit</th>
 										<th>BL </th>
 										<th>BP </th>
 										<th>LL </th>
@@ -73,7 +73,7 @@
 						<input type="hidden" id="id" value="">
 						
 						<div class="form-group">
-							<label for="message-text" class="col-form-label">Bulan:</label>
+							<label for="message-text" class="col-form-label">Bulan</label>
 							<select  id="bulan" class="form-control">
 								@foreach ($data['bulan'] as $k => $bulan)
 								<option value="{{ $k }}">{{ $bulan }}</option>
@@ -83,13 +83,13 @@
 
 						</div>
 						<div class="form-group">
-							<label for="message-text" class="col-form-label">Tahun:</label>
+							<label for="message-text" class="col-form-label">Tahun</label>
 							<input type="text" class="form-control" id="tahun">
 							<div class="error"></div>
 
 						</div>
 						<div class="form-group">
-							<label for="message-text" class="col-form-label">Puskesmas:</label>
+							<label for="message-text" class="col-form-label">Puskesmas</label>
 							<select  id="puskesmas" class="form-control">
 								@foreach ($data['puskesmas'] as $puskesmas)
 								<option value="{{ $puskesmas->puskesmas_id }}">{{ $puskesmas->puskesmas_nama }}</option>
@@ -99,7 +99,7 @@
 
 						</div>
 						<div class="form-group">
-							<label for="message-text" class="col-form-label">Penyakit:</label>
+							<label for="message-text" class="col-form-label">Penyakit</label>
 							<select  id="penyakit" class="form-control">
 								@foreach ($data['penyakit'] as $penyakit)
 								<option value="{{ $penyakit->penyakit_id }}">{{ $penyakit->penyakit_nama }}</option>
@@ -109,14 +109,14 @@
 
 						</div>
 						<div class="form-group">
-							<label for="message-text" class="col-form-label">BL:</label>
+							<label for="message-text" class="col-form-label">BL</label>
 							<input type="text"  id="BL" class="form-control"></input>
 							
 							<div class="error"></div>
 
 						</div>
 						<div class="form-group">
-							<label for="message-text" class="col-form-label">BP:</label>
+							<label for="message-text" class="col-form-label">BP</label>
 							<input type="text"  id="BP" class="form-control"></input>
 							
 							<div class="error"></div>
@@ -124,7 +124,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="message-text" class="col-form-label">LL:</label>
+							<label for="message-text" class="col-form-label">LL</label>
 							<input type="text"  id="LL" class="form-control"></input>
 							
 							<div class="error"></div>
@@ -132,7 +132,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="message-text" class="col-form-label">LP:</label>
+							<label for="message-text" class="col-form-label">LP</label>
 							<input type="text"  id="LP" class="form-control"></input>
 							
 							<div class="error"></div>

@@ -66,7 +66,7 @@
 						<input type="hidden" id="id" value="">
 						
 						<div class="form-group">
-							<label for="message-text" class="col-form-label">Kabupaten:</label>
+							<label for="message-text" class="col-form-label">Kabupaten</label>
 							<select  id="kabupaten" class="form-control">
 								@foreach ($data['kabupaten'] as $kabupaten)
 								<option value="{{ $kabupaten->kabupaten_id }}">{{ $kabupaten->kabupaten_nama }}</option>
@@ -76,7 +76,7 @@
 
 						</div>
 						<div class="form-group">
-							<label for="message-text" class="col-form-label">Nama Kecamatan:</label>
+							<label for="message-text" class="col-form-label">Nama Kecamatan</label>
 							<input type="text"  id="nama" class="form-control"></input>
 							<div class="error"></div>
 
