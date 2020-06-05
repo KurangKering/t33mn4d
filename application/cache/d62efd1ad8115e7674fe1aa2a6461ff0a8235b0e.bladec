@@ -5,8 +5,15 @@
 <?php $this->startSection('css-inline'); ?>
 <style>
 	#container {
- min-height: 800px;
+ margin: 0 auto;
+ height: 800px;
+ width: 1037px;
+ 
 	}
+	
+	
+
+	
 
 	.highcharts-tooltip { 
  z-index: 9999 !important;
@@ -643,15 +650,16 @@
  style: {
  fontSize: "14px",
  // textOutline: "3px contrast",
+ // 
 
 
  },
  overflow: "none",
 
- // useHTML: true,
- // formatter() {
- // 	return "<div class=\"text-center\">" + this.point.name + "<br>" + this.point.value+ "</div>";
- // }
+ useHTML: true,
+ formatter() {
+ return "<div class=\"text-center\">" + this.point.name + "<br>" + this.point.value+ " Pasien</div>";
+ }
 
  },
  hover: {

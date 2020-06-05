@@ -157,7 +157,7 @@ class LibraryTreemap
 
 			$items_kab = array(
 				'Kota / Kabupaten' => $vkab->kabupaten_nama,
-				'Jumlah' => bilangan($c_jum_kab),
+				'Jumlah' => bilangan($c_jum_kab) . " Pasien",
 			);
 
 			$html_kab  = $this->htmlVerticalHeaderTable($items_kab);
@@ -186,7 +186,7 @@ class LibraryTreemap
 				$items_kec = array(
 					'Kota / Kabupaten' => $vkab->kabupaten_nama,
 					'Kecamatan'        => $vkec->kecamatan_nama,
-					'Jumlah' => bilangan($c_jum_kec),
+					'Jumlah' => bilangan($c_jum_kec) . " Pasien",
 
 				);
 
@@ -218,7 +218,7 @@ class LibraryTreemap
 						'Kota / Kabupaten' => $vkab->kabupaten_nama,
 						'Kecamatan'        => $vkec->kecamatan_nama,
 						'Puskesmas'        => $vpus->puskesmas_nama,
-						'Jumlah' => bilangan($c_jum_pus),
+						'Jumlah' => bilangan($c_jum_pus) . " Pasien",
 
 					);
 
@@ -250,7 +250,7 @@ class LibraryTreemap
 							'Kecamatan'        => $vkec->kecamatan_nama,
 							'Puskesmas'        => $vpus->puskesmas_nama,
 							'Status'           => $vstat,
-							'Jumlah' => bilangan($c_jum_stat),
+							'Jumlah' => bilangan($c_jum_stat) . " Pasien",
 
 						);
 
@@ -285,7 +285,7 @@ class LibraryTreemap
 								'Puskesmas'        => $vpus->puskesmas_nama,
 								'Status'           => $vstat,
 								'Penyakit'         => $vpen->penyakit_nama,
-								'Jumlah' => bilangan($c_jum_pen),
+								'Jumlah' => bilangan($c_jum_pen) . " Pasien",
 
 							);
 
@@ -293,7 +293,7 @@ class LibraryTreemap
 
 							$array_pen = array(
 								'id'          => md5('pen' . $vpen->kesakitan_penyakit_id),
-								'name'        => (string) $vpen->kesakitan_penyakit_id,
+								'name'        => (string) $vpen->penyakit_nama,
 								'value'       => $c_jum_pen,
 								'status'      => 5,
 								'color'       => $w_pen[$iwpen],
@@ -320,7 +320,7 @@ class LibraryTreemap
 									'Status'           => $vstat,
 									'Penyakit'         => $vpen->penyakit_nama,
 									'Bulan'            => $h_bul[$vbul],
-									'Jumlah'      => bilangan($c_jum_bul),
+									'Jumlah'      => bilangan($c_jum_bul) . " Pasien",
 								);
 
 								$html_bul  = $this->htmlVerticalHeaderTable($items_bul);
@@ -469,6 +469,7 @@ class LibraryTreemap
 				kb.kabupaten_nama,
 				py.penyakit_status,
 				py.penyakit_nama,
+				py.penyakit_kode,
 				');
 
 			if ($this->_ex_cond) {
