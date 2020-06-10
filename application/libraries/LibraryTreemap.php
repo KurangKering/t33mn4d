@@ -284,6 +284,7 @@ class LibraryTreemap
 								'Kecamatan'        => $vkec->kecamatan_nama,
 								'Puskesmas'        => $vpus->puskesmas_nama,
 								'Status'           => $vstat,
+								'Kode Penyakit'    => $vpen->penyakit_kode,
 								'Penyakit'         => $vpen->penyakit_nama,
 								'Jumlah' => bilangan($c_jum_pen) . " Pasien",
 
@@ -318,6 +319,7 @@ class LibraryTreemap
 									'Kecamatan'        => $vkec->kecamatan_nama,
 									'Puskesmas'        => $vpus->puskesmas_nama,
 									'Status'           => $vstat,
+									'Kode Penyakit'    => $vpen->penyakit_kode,
 									'Penyakit'         => $vpen->penyakit_nama,
 									'Bulan'            => $h_bul[$vbul],
 									'Jumlah'      => bilangan($c_jum_bul) . " Pasien",
